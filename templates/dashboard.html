@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | AI Chatbot Pro</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <img src="{{ url_for('static', filename='images/chat.png') }}">
+
+                <h2>AI Chatbot</h2>
+
+            </div>
+
+            <ul>
+
+                <li class="active">
+
+                    <a href="{{ url_for('dashboard') }}">
+
+                        <i class="fa-solid fa-house"></i> Dashboard
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ url_for('chat') }}">
+
+                        <i class="fa-solid fa-comments"></i> Chat
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ url_for('history') }}">
+
+                        <i class="fa-solid fa-clock-rotate-left"></i> History
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ url_for('profile') }}">
+
+                        <i class="fa-solid fa-user"></i> Profile
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ url_for('settings') }}">
+
+                        <i class="fa-solid fa-gear"></i> Settings
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="{{ url_for('logout') }}">
+
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </aside>
+
+        <!-- Main -->
+
+        <main class="main">
+
+            <header>
+                <h1>
+                    Welcome, {{ user.fullname }}
+                </h1>
+                <p>@{{ user.username }}</p>
+                <p>
+
+                    AI Chatbot Dashboard
+
+                </p>
+
+            </header>
+
+            <!-- Cards -->
+
+            <section class="cards">
+
+                <div class="card">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                    <h2>Start Chat</h2>
+
+                    <p>
+
+                        Talk with Groq AI Assistant.
+
+                    </p>
+
+                    <a href="{{ url_for('chat') }}">
+
+                    Open Chat
+
+                </a>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <h2>History</h2>
+
+                    <p>
+
+                        View previous conversations.
+
+                    </p>
+
+                    <a href="{{ url_for('history') }}">
+
+                    Open History
+
+                </a>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <h2>Profile</h2>
+
+                    <p>
+
+                        Update your profile.
+
+                    </p>
+
+                    <a href="{{ url_for('profile') }}">
+
+                    Open Profile
+
+                </a>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <h2>Settings</h2>
+
+                    <p>
+
+                        Change theme and AI model.
+
+                    </p>
+
+                    <a href="{{ url_for('settings') }}">
+
+                    Open Settings
+
+                </a>
+
+                </div>
+
+            </section>
+
+            <!-- Statistics -->
+
+            <section class="stats">
+
+                <div class="stat">
+
+                    <h3>{{ fullname }}</h3>
+
+                    <p>Logged In User</p>
+
+                </div>
+
+                <div class="stat">
+
+                    <h3>{{ session.username }}</h3>
+
+                    <p>Username</p>
+
+                </div>
+
+                <div class="stat">
+
+                    <h3>{{ session.ai_model }}</h3>
+
+                    <p>Current AI Model</p>
+
+                </div>
+
+                <div class="stat">
+
+                    <h3>{{ session.theme }}</h3>
+
+                    <p>Current Theme</p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+
+</html>

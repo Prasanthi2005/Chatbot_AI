@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | AI Chatbot Pro</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/settings.css') }}">
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <div class="settings-card">
+
+
+
+            <div class="header">
+
+
+                <img src="{{ url_for('static',filename='images/chat.png') }}">
+
+
+                <h2>Settings</h2>
+
+                <p>Customize your AI Chatbot experience</p>
+
+
+            </div>
+
+
+
+
+
+            <form id="settingsForm" method="POST" action="{{ url_for('settings') }}">
+
+
+
+
+
+
+                <!-- Profile -->
+
+
+                <div class="section">
+
+
+                    <h3>
+                        <i class="fa-solid fa-user"></i> Profile Settings
+                    </h3>
+
+
+
+                    <div class="input-group">
+
+                        <label>Full Name</label>
+
+                        <input type="text" name="fullname" id="fullname" value="{{user.fullname if user else ''}}" placeholder="Full Name">
+
+
+                    </div>
+
+
+
+
+
+                    <div class="input-group">
+
+                        <label>Email</label>
+
+                        <input type="email" name="email" id="email" value="{{user.email if user else ''}}" placeholder="Email">
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!-- AI Model -->
+
+
+                <div class="section">
+
+
+                    <h3>
+                        <i class="fa-solid fa-robot"></i> AI Model
+                    </h3>
+
+
+
+                    <select id="ai_model" name="ai_model">
+
+
+<option value="Gemini">
+
+Gemini AI
+
+</option>
+
+
+<option value="OpenAI">
+
+OpenAI GPT
+
+</option>
+
+
+</select>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!-- Appearance -->
+
+
+                <div class="section">
+
+
+                    <h3>
+                        <i class="fa-solid fa-palette"></i> Appearance
+                    </h3>
+
+
+
+                    <div class="toggle-box">
+
+
+                        <label>
+
+Dark Mode
+
+</label>
+
+
+                        <input type="checkbox" id="theme" name="theme">
+
+
+                    </div>
+
+
+
+
+
+                    <div class="toggle-box">
+
+
+                        <label>
+
+Notifications
+
+</label>
+
+
+                        <input type="checkbox" id="notifications" name="notifications" checked>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <!-- Security -->
+
+
+                <div class="section">
+
+
+                    <h3>
+                        <i class="fa-solid fa-lock"></i> Security
+                    </h3>
+
+
+
+                    <a href="{{url_for('forgot_password')}}" class="password-link">
+
+
+Change Password
+
+
+</a>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <button id="saveBtn" type="submit">
+
+
+<i class="fa-solid fa-save"></i>
+
+Save Settings
+
+
+</button>
+
+
+
+
+
+
+
+            </form>
+
+
+
+
+
+
+            <button class="delete-btn" id="deleteAccount">
+
+
+<i class="fa-solid fa-trash"></i>
+
+Delete Account
+
+
+</button>
+
+
+
+
+
+
+            <div class="back">
+
+
+                <a href="{{url_for('chat')}}">
+
+                    <i class="fa-solid fa-arrow-left"></i> Back To Chat
+
+
+                </a>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <script src="{{url_for('static',filename='js/settings.js')}}"></script>
+
+
+</body>
+
+
+</html>

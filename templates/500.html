@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>500 - Internal Server Error</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/500.css') }}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <img src="{{ url_for('static', filename='images/error500.png') }}" alt="500 Error">
+
+            <h1>500</h1>
+
+            <h2>Internal Server Error</h2>
+
+            <p>
+
+                Oops! Something went wrong on our server. Please try again later.
+
+            </p>
+
+            <div class="buttons">
+
+                <a href="{{ url_for('home') }}" id="homeBtn" class="home-btn">
+
+                    <i class="fa-solid fa-house"></i> Home
+
+                </a>
+
+                <button id="reloadBtn" class="reload-btn">
+
+        <i class="fa-solid fa-rotate-right"></i>
+
+        Reload
+
+    </button>
+
+            </div>
+
+            <p class="redirect-text">
+
+                Redirecting to Home in
+
+                <strong id="countdown">
+
+        15
+
+    </strong> seconds...
+
+            </p>
+
+            <script src="{{ url_for('static', filename='js/500.js') }}"></script>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

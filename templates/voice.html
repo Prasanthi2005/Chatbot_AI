@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voice Assistant | AI Chatbot Pro</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/voice.css') }}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="voice-card">
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <div class="logo-box">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="AI Chatbot Logo">
+                </div>
+
+                <h2>AI Voice Assistant</h2>
+
+                <p>
+                    Speak with your AI chatbot
+                </p>
+
+            </div>
+
+
+            <!-- MICROPHONE -->
+
+            <div class="mic-area">
+
+                <button type="button" class="mic-circle" id="micCircle" title="Start Voice">
+
+                <i class="fa-solid fa-microphone"></i>
+
+            </button>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <h3 id="status">
+                Click microphone to speak
+            </h3>
+
+
+            <!-- VOICE TEXT -->
+
+            <textarea id="voiceText" placeholder="Your voice text appears here..." readonly></textarea>
+
+
+            <!-- BUTTONS -->
+
+            <div class="buttons">
+
+                <button type="button" id="startVoice" class="start-btn">
+
+                <i class="fa-solid fa-microphone"></i>
+
+                Start Voice
+
+            </button>
+
+
+                <button type="button" id="stopVoice" class="stop-btn" disabled>
+
+                <i class="fa-solid fa-stop"></i>
+
+                Stop
+
+            </button>
+
+            </div>
+
+
+            <!-- SEND -->
+
+            <button type="button" id="sendVoice" class="send" disabled>
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Send To AI
+
+        </button>
+
+
+            <!-- AI RESPONSE -->
+
+            <div id="aiResponse" class="ai-response" style="display:none;">
+
+                <div class="response-title">
+                    <i class="fa-solid fa-robot"></i> AI Response
+                </div>
+
+                <div id="responseText" class="response-text">
+                </div>
+
+            </div>
+
+
+            <!-- BACK -->
+
+            <div class="back">
+
+                <a href="{{ url_for('chat') }}">
+
+                    <i class="fa-solid fa-arrow-left"></i> Back To Chat
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/voice.js') }}">
+    </script>
+
+</body>
+
+</html>

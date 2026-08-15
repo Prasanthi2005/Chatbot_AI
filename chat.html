@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Pro</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="chat-app">
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+                <div>
+                    <h2>AI Chatbot Pro</h2>
+                    <span>Powered by AI</span>
+                </div>
+            </div>
+
+            <button id="themeToggle" class="icon-btn">🌙</button>
+        </div>
+
+        <button id="newChatBtn" class="new-chat-btn">+ New Chat</button>
+
+        <div class="sidebar-footer">
+            <a href="{{ url_for('dashboard') }}" class="side-link">Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="side-link">Logout</a>
+        </div>
+    </aside>
+
+    <main class="chat-main">
+
+        <header class="chat-header">
+            <h1>AI Assistant</h1>
+            <p>Ask coding, AI, Python, Flask, SQL or any technical question.</p>
+        </header>
+
+        <section id="conversationContainer" class="conversation-container">
+
+            <div id="welcomeScreen" class="welcome-screen">
+                <div class="welcome-card">
+                    <h2>Hello 👋</h2>
+                    <p>Start a new conversation with your AI assistant.</p>
+                </div>
+            </div>
+
+            <div id="chatMessages" class="chat-messages"></div>
+
+            <div id="typingIndicator" class="typing-indicator hidden">
+                <span></span><span></span><span></span>
+            </div>
+
+        </section>
+
+        <form id="chatForm" class="chat-form">
+            <div class="input-wrapper">
+                <textarea id="messageInput"
+                          placeholder="Type your message..."
+                          rows="1"
+                          maxlength="4000"></textarea>
+
+                <button type="submit" id="sendBtn">Send</button>
+            </div>
+
+            <div class="input-footer">
+                <span id="charCounter">0 / 4000</span>
+            </div>
+        </form>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

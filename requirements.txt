@@ -1,0 +1,93 @@
+# ==========================================
+# AI_CHATBOT_PRO
+# requirements.txt
+# ==========================================
+
+Authlib
+python-dotenv
+# Flask Framework
+Flask==3.1.0
+
+
+# Environment Variables
+python-dotenv==1.0.1
+
+
+
+# Database
+Flask-SQLAlchemy==3.1.1
+
+
+
+# Authentication Security
+Werkzeug==3.1.3
+
+
+
+# Email OTP
+Flask-Mail==0.10.0
+
+
+
+# AI APIs
+
+groq==0.13.1
+
+google-generativeai==0.8.3
+
+openai==1.59.7
+
+
+
+# HTTP Requests
+
+requests==2.32.3
+
+
+
+
+# PDF Export
+
+reportlab==4.2.5
+
+
+
+
+# DOCX Export
+
+python-docx==1.1.2
+
+
+
+
+# Markdown Support
+
+Markdown==3.7
+
+
+
+
+# Image Processing
+
+Pillow==11.1.0
+
+
+
+
+# JSON / Data Handling
+
+pandas==2.2.3
+
+
+
+
+# Security / Password Hashing
+
+bcrypt==4.2.1
+
+
+
+
+# Production Server
+
+gunicorn==23.0.0

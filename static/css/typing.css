@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( 135deg, #020617, #1e40af, #2563eb);
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.typing-card {
+    width: 600px;
+    padding: 30px;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.header h2 {
+    margin-top: 10px;
+    font-size: 28px;
+}
+
+.header p {
+    color: #cbd5e1;
+}
+
+.chat-box {
+    background: rgba(0, 0, 0, .2);
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 300px;
+}
+
+.message {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.user-message {
+    background: #2563eb;
+    margin-left: 80px;
+}
+
+.bot-message {
+    background: #334155;
+}
+
+.bot-message img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+#typingText {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #60a5fa;
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+@media(max-width:600px) {
+    .typing-card {
+        width: 100%;
+        padding: 20px;
+    }
+    .user-message {
+        margin-left: 20px;
+    }
+}

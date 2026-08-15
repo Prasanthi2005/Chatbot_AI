@@ -1,0 +1,530 @@
+/* ==========================================
+   AI Chatbot Pro
+   register.css (Part 1)
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #2563eb);
+    padding: 30px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-card {
+    width: 700px;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+}
+
+
+/* ==========================================
+   Logo
+========================================== */
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logo h2 {
+    margin-top: 15px;
+    font-size: 32px;
+    position: relative;
+    bottom: 60px;
+}
+
+.logo p {
+    color: #d1d5db;
+    margin-top: 8px;
+    position: relative;
+    bottom: 60px;
+}
+
+
+/* ==========================================
+   Flash Messages
+========================================== */
+
+.alert {
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.success {
+    background: #16a34a;
+}
+
+.danger {
+    background: #dc2626;
+}
+
+.warning {
+    background: #f59e0b;
+}
+
+.info {
+    background: #0284c7;
+}
+
+
+/* ==========================================
+   Profile Upload
+========================================== */
+
+.profile-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-upload img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #2563eb;
+    margin-bottom: 15px;
+}
+
+.profile-upload label {
+    background: #2563eb;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.profile-upload label:hover {
+    background: #1d4ed8;
+}
+
+
+/* ==========================================
+   Form
+========================================== */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: #334155;
+    color: white;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.input-group input::placeholder {
+    color: #94a3b8;
+}
+
+.input-group input:focus {
+    border: 2px solid #3b82f6;
+    background: #475569;
+}
+
+
+/* ==========================================
+   Password
+========================================== */
+
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 50px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #cbd5e1;
+}
+
+.toggle-password:hover {
+    color: white;
+}
+
+
+/* ==========================================
+   Password Strength
+========================================== */
+
+.strength {
+    width: 100%;
+    height: 8px;
+    background: #334155;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+#strengthBar {
+    width: 0;
+    height: 100%;
+    background: red;
+    transition: .3s;
+}
+
+#strengthText {
+    display: block;
+    margin-top: 10px;
+    color: #cbd5e1;
+}
+
+
+/* ==========================================
+   Terms & Conditions
+========================================== */
+
+.terms {
+    margin: 25px 0;
+    font-size: 15px;
+    color: #e2e8f0;
+}
+
+.terms label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.terms input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.terms a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   Register Button
+========================================== */
+
+.register-btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.register-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.register-btn:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   Divider
+========================================== */
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+}
+
+.divider span {
+    margin: 0 15px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   Social Login
+========================================== */
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.google-btn,
+.github-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.google-btn {
+    background: white;
+    color: #111827;
+}
+
+.google-btn:hover {
+    background: #f3f4f6;
+}
+
+.github-btn {
+    background: #111827;
+    color: white;
+}
+
+.github-btn:hover {
+    background: #000;
+}
+
+
+/* ==========================================
+   Login Link
+========================================== */
+
+.login-link {
+    margin-top: 30px;
+    text-align: center;
+    color: #cbd5e1;
+}
+
+.login-link a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   Loading Spinner
+========================================== */
+
+.spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, .4);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ==========================================
+   Toast Notification
+========================================== */
+
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2563eb;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: .3s;
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   Hover Animation
+========================================== */
+
+.register-card {
+    transition: .3s;
+}
+
+.register-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .35);
+}
+
+.input-group input {
+    transition: .3s;
+}
+
+.input-group input:hover {
+    background: #475569;
+}
+
+
+/* ==========================================
+   Responsive Design
+========================================== */
+
+@media(max-width:768px) {
+    body {
+        padding: 15px;
+    }
+    .register-card {
+        width: 100%;
+        padding: 25px;
+    }
+    .profile-upload img {
+        width: 120px;
+        height: 120px;
+    }
+    .logo h2 {
+        font-size: 28px;
+    }
+}
+
+@media(max-width:480px) {
+    .register-card {
+        padding: 20px;
+    }
+    .logo img {
+        width: 80px;
+        height: 80px;
+    }
+    .logo h2 {
+        font-size: 24px;
+    }
+    .register-btn,
+    .google-btn,
+    .github-btn {
+        font-size: 15px;
+        padding: 13px;
+    }
+    .terms {
+        font-size: 14px;
+    }
+}
+
+.social-login {
+    margin-top: 20px;
+}
+
+.google-btn,
+.github-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.google-btn {
+    background: #ffffff;
+    color: #333;
+}
+
+.google-btn:hover {
+    background: #f2f2f2;
+}
+
+.github-btn {
+    background: #181818;
+    color: #ffffff;
+}
+
+.github-btn:hover {
+    background: #000000;
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    color: #ccc;
+}

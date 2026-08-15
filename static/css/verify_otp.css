@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( 135deg, #020617, #1e40af, #2563eb);
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.otp-card {
+    width: 430px;
+    padding: 40px;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.logo h2 {
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.logo p {
+    color: #cbd5e1;
+}
+
+.otp-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.otp-input {
+    width: 45px;
+    height: 55px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background: #334155;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+.otp-input:focus {
+    border: 2px solid #60a5fa;
+}
+
+.timer {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #cbd5e1;
+}
+
+#timer {
+    color: #60a5fa;
+    font-weight: bold;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.resend {
+    margin-top: 15px;
+    background: #475569;
+}
+
+.resend:hover {
+    background: #334155;
+}
+
+.back {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.back a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.success {
+    background: #16a34a;
+}
+
+.danger {
+    background: #dc2626;
+}
+
+.toast {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: #16a34a;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media(max-width:500px) {
+    .otp-card {
+        width: 100%;
+        padding: 25px;
+    }
+    .otp-input {
+        width: 38px;
+        height: 50px;
+    }
+}

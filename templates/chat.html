@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Chatbot</title>
+
+    <!-- Chat CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+    <div class="chat-app">
+
+
+        <!-- =========================================================
+         SIDEBAR
+    ========================================================== -->
+
+        <aside class="sidebar">
+
+            <!-- Sidebar Header -->
+
+            <div class="sidebar-header">
+
+                <div class="brand">
+
+                    <div class="brand-logo">
+                        🤖
+                    </div>
+
+                    <div class="brand-info">
+
+                        <h2>AI Chatbot</h2>
+
+                        <span>
+                        Powered by AI
+                    </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Theme -->
+
+                <button type="button" id="themeToggle" class="icon-btn" title="Toggle theme">
+
+                🌙
+
+            </button>
+
+            </div>
+
+
+
+            <!-- New Chat -->
+
+            <button type="button" id="newChatBtn" class="new-chat-btn">
+
+            + New Chat
+
+        </button>
+
+
+
+            <!-- Features -->
+
+            <div class="sidebar-info">
+
+                <div class="feature-item">
+                    💬
+                    <span>Text Chat</span>
+                </div>
+
+                <div class="feature-item">
+                    🎤
+                    <span>Voice Input</span>
+                </div>
+
+                <div class="feature-item">
+                    📎
+                    <span>File Upload</span>
+                </div>
+
+                <div class="feature-item">
+                    🖼️
+                    <span>Image Analysis</span>
+                </div>
+
+            </div>
+
+
+
+            <!-- Sidebar Footer -->
+
+            <div class="sidebar-footer">
+
+                <a href="{{ url_for('dashboard') }}" class="side-link">
+
+                Dashboard
+
+            </a>
+
+
+                <a href="{{ url_for('logout') }}" class="side-link">
+
+                Logout
+
+            </a>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================================================
+         MAIN CHAT
+    ========================================================== -->
+
+        <main class="chat-main">
+
+
+            <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+            <header class="chat-header">
+
+                <div>
+
+                    <h1>
+                        AI Assistant
+                    </h1>
+
+                    <p>
+                        Ask coding, AI, Python, Flask, SQL or any technical question.
+                    </p>
+
+                </div>
+
+
+                <div class="online-status">
+
+                    <span class="online-dot"></span> Online
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =====================================================
+             CONVERSATION AREA
+        ====================================================== -->
+
+            <section id="conversationContainer" class="conversation-container">
+
+
+                <!-- =================================================
+                 WELCOME SCREEN
+            ================================================== -->
+
+                <div id="welcomeScreen" class="welcome-screen">
+
+                    <div class="welcome-card">
+
+
+                        <div class="welcome-icon">
+                            🤖
+                        </div>
+
+
+                        <h2>
+                            Hello 👋
+                        </h2>
+
+
+                        <p>
+                            Start a new conversation with your AI assistant.
+                        </p>
+
+
+
+                        <!-- Welcome Features -->
+
+                        <div class="welcome-features">
+
+
+                            <div>
+                                <span class="welcome-feature-icon">
+                                💬
+                            </span>
+
+                                <span>
+                                Ask anything
+                            </span>
+                            </div>
+
+
+
+                            <div>
+                                <span class="welcome-feature-icon">
+                                🎤
+                            </span>
+
+                                <span>
+                                Use your voice
+                            </span>
+                            </div>
+
+
+
+                            <div>
+                                <span class="welcome-feature-icon">
+                                📎
+                            </span>
+
+                                <span>
+                                Upload files
+                            </span>
+                            </div>
+
+
+
+                            <div>
+                                <span class="welcome-feature-icon">
+                                🖼️
+                            </span>
+
+                                <span>
+                                Analyze images
+                            </span>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                 CHAT MESSAGES
+            ================================================== -->
+
+                <div id="chatMessages" class="chat-messages">
+                </div>
+                <!-- AI Voice Reply -->
+                <audio id="aiVoiceAudio" controls hidden></audio>
+
+
+
+                <!-- =================================================
+                 TYPING INDICATOR
+            ================================================== -->
+
+                <div id="typingIndicator" class="typing-indicator hidden">
+
+
+                    <div class="typing-avatar">
+                        🤖
+                    </div>
+
+
+                    <div class="typing-content">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =====================================================
+             CHAT FORM
+        ====================================================== -->
+
+            <form id="chatForm" class="chat-form">
+
+
+                <!-- =================================================
+                 FILE PREVIEW
+            ================================================== -->
+
+                <div id="filePreview" class="file-preview hidden">
+                </div>
+
+
+
+                <!-- =================================================
+                 INPUT WRAPPER
+            ================================================== -->
+
+                <div class="input-wrapper">
+
+
+                    <!-- =================================================
+                     FILE UPLOAD BUTTON
+                ================================================== -->
+
+                    <button type="button" id="fileBtn" class="input-action-btn" title="Attach file">
+
+                    📎
+
+                </button>
+
+
+
+                    <!-- =================================================
+                     FILE INPUT
+
+                     Supported:
+                     txt
+                     pdf
+                     doc
+                     docx
+                     csv
+                     py
+                     js
+                     html
+                     css
+                     json
+                     java
+                     cpp
+                     c
+                     sql
+                     md
+                     png
+                     jpg
+                     jpeg
+                     webp
+                     gif
+                     bmp
+                ================================================== -->
+
+                    <input type="file" id="fileInput" name="file" hidden multiple accept=".txt,.pdf,.doc,.docx,.csv,.py,.js,.html,.css,.json,.java,.cpp,.c,.sql,.md,.png,.jpg,.jpeg,.webp,.gif,.bmp">
+
+
+
+                    <!-- =================================================
+                     MESSAGE INPUT
+
+                     IMPORTANT:
+                     Main ID = messageInput
+
+                     chat.js should use:
+                     document.getElementById("messageInput")
+                ================================================== -->
+
+                    <textarea id="messageInput" name="message" placeholder="Type your message..." maxlength="4000" rows="1" autocomplete="off"></textarea>
+
+
+
+                    <!-- =================================================
+                     VOICE INPUT
+                ================================================== -->
+
+                    <button type="button" id="voiceBtn" class="input-action-btn voice-btn" title="Voice Input" aria-label="Voice Input">
+
+                    🎤
+
+                </button>
+
+
+
+                    <!-- =================================================
+                     SEND BUTTON
+                ================================================== -->
+
+                    <button type="submit" id="sendBtn" class="send-btn">
+
+                    <span>
+                        Send
+                    </span>
+
+                    <span class="send-icon">
+                        ➤
+                    </span>
+
+                </button>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                 INPUT FOOTER
+            ================================================== -->
+
+                <div class="input-footer">
+
+
+                    <span id="charCounter">
+                    0 / 4000
+                </span>
+
+
+                    <span class="input-help">
+                    Enter to send • Shift + Enter for new line
+                </span>
+
+
+                </div>
+
+
+            </form>
+
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =============================================================
+     JAVASCRIPT
+============================================================== -->
+
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+
+
+</body>
+
+</html>

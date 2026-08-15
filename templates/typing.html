@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Typing Animation | AI Chatbot Pro</title>
+
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/typing.css') }}">
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" rel="stylesheet">
+
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <div class="typing-card">
+
+
+            <div class="header">
+
+                <img src="{{ url_for('static',filename='images/logo.png') }}">
+
+                <h2>AI Chatbot</h2>
+
+                <p>Typing Animation Demo</p>
+
+            </div>
+
+
+
+
+
+            <!-- Chat Area -->
+
+            <div class="chat-box">
+
+
+                <div class="message user-message">
+
+                    Hello AI, explain Artificial Intelligence
+
+                </div>
+
+
+
+
+
+                <div class="message bot-message">
+
+
+                    <img src="{{ url_for('static',filename='images/bot.jpg') }}">
+
+
+                    <div>
+
+
+                        <span id="typingText"></span>
+
+
+
+                        <div class="typing-indicator" id="typingIndicator">
+
+
+                            <span></span>
+
+                            <span></span>
+
+                            <span></span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="buttons">
+
+
+                <button id="startBtn">
+
+<i class="fa-solid fa-play"></i>
+
+Start Typing
+
+</button>
+
+
+
+                <button id="stopBtn">
+
+<i class="fa-solid fa-stop"></i>
+
+Stop
+
+</button>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+    <script src="{{ url_for('static',filename='js/typing.js') }}"></script>
+
+
+</body>
+
+
+</html>

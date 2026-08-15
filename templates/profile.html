@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Profile | AI Chatbot </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <img src="{{ url_for('static', filename='images/chat.png') }}" alt="Logo">
+
+                <h2>AI Chatbot</h2>
+
+            </div>
+
+            <ul>
+
+                <li>
+                    <a href="{{ url_for('dashboard') }}">
+                        <i class="fa-solid fa-house"></i> Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('chat') }}">
+                        <i class="fa-solid fa-comments"></i> Chat
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('history') }}">
+                        <i class="fa-solid fa-clock-rotate-left"></i> History
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="{{ url_for('profile') }}">
+                        <i class="fa-solid fa-user"></i> Profile
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('settings') }}">
+                        <i class="fa-solid fa-gear"></i> Settings
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url_for('logout') }}">
+                        <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    </a>
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+        <main class="content">
+
+            <div class="page-header">
+
+                <h1>
+                    <i class="fa-solid fa-user"></i> My Profile
+                </h1>
+
+                <p>
+                    View and update your personal information.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+             FLASH MESSAGES
+        ========================== -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+
+            <div class="alert {{ category }}">
+                {{ message }}
+            </div>
+
+            {% endfor %} {% endif %} {% endwith %}
+
+
+            <!-- =========================
+             PROFILE CARD
+        ========================== -->
+
+            <div class="profile-card">
+
+
+                <!-- PROFILE IMAGE -->
+                <div class="profile-image-section">
+
+                    {% if user["profile_photo"] %}
+
+                    <img id="profilePreview" src="{{ url_for('static', filename=user['profile_photo']) }}" alt="Profile Photo"> {% else %}
+
+                    <img id="profilePreview" src="{{ url_for('static', filename='images/prasanthi1.png') }}" alt="Default Profile"> {% endif %}
+                    <label for="profileImage" class="upload-btn">
+
+        <i class="fa-solid fa-camera"></i>
+        Change Photo
+
+    </label>
+
+                </div>
+
+                <input type="file" id="profileImage" name="profile_photo" accept="image/*" hidden>
+
+
+                <!-- =========================
+                 PROFILE FORM
+            ========================== -->
+
+                <form id="profileForm" action="{{ url_for('profile') }}" method="POST" enctype="multipart/form-data">
+
+
+                    <!-- PHOTO INPUT -->
+
+                    <input type="file" id="profileImage" name="profile_photo" accept="image/*" hidden>
+
+
+                    <!-- =========================
+                     PERSONAL INFORMATION
+                ========================== -->
+
+                    <div class="form-grid">
+
+
+                        <!-- FULL NAME -->
+
+                        <div class="input-group">
+
+                            <label for="fullname">
+                            Full Name
+                        </label>
+
+                            <input type="text" id="fullname" name="fullname" value="{{ user['fullname'] }}" required>
+
+                        </div>
+
+
+                        <!-- USERNAME -->
+
+                        <div class="input-group">
+
+                            <label for="username">
+                            Username
+                        </label>
+
+                            <input type="text" id="username" name="username" value="{{ user['username'] }}" readonly>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="input-group">
+
+                            <label for="email">
+                            Email Address
+                        </label>
+
+                            <input type="email" id="email" name="email" value="{{ user['email'] }}" required>
+
+                        </div>
+
+
+                        <!-- PHONE -->
+
+                        <div class="input-group">
+
+                            <label for="phone">
+                            Phone Number
+                        </label>
+
+                            <input type="text" id="phone" name="phone" value="{{ user['phone'] if 'phone' in user.keys() else '' }}" placeholder="Enter phone number">
+
+                        </div>
+
+
+                        <!-- CITY -->
+
+                        <div class="input-group">
+
+                            <label for="city">
+                            City
+                        </label>
+
+                            <input type="text" id="city" name="city" value="{{ user['city'] if 'city' in user.keys() else '' }}" placeholder="Enter city">
+
+                        </div>
+
+
+                        <!-- COUNTRY -->
+
+                        <div class="input-group">
+
+                            <label for="country">
+                            Country
+                        </label>
+
+                            <input type="text" id="country" name="country" value="{{ user['country'] if 'country' in user.keys() else '' }}" placeholder="Enter country">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                     CHANGE PASSWORD
+                ========================== -->
+
+                    <div class="password-section">
+
+                        <h2>
+
+                            <i class="fa-solid fa-lock"></i> Change Password
+
+                        </h2>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- CURRENT PASSWORD -->
+
+                            <div class="input-group">
+
+                                <label for="current_password">
+                                Current Password
+                            </label>
+
+                                <div class="password-box">
+
+                                    <input type="password" id="current_password" name="current_password" placeholder="Current Password">
+
+                                    <i class="fa-solid fa-eye toggle-password" data-target="current_password"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- NEW PASSWORD -->
+
+                            <div class="input-group">
+
+                                <label for="new_password">
+                                New Password
+                            </label>
+
+                                <div class="password-box">
+
+                                    <input type="password" id="new_password" name="new_password" placeholder="New Password">
+
+                                    <i class="fa-solid fa-eye toggle-password" data-target="new_password"></i>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CONFIRM PASSWORD -->
+
+                            <div class="input-group">
+
+                                <label for="confirm_new_password">
+                                Confirm Password
+                            </label>
+
+                                <div class="password-box">
+
+                                    <input type="password" id="confirm_new_password" name="confirm_new_password" placeholder="Confirm Password">
+
+                                    <i class="fa-solid fa-eye toggle-password" data-target="confirm_new_password"></i>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                     ACCOUNT STATISTICS
+                ========================== -->
+
+                    <div class="profile-stats">
+
+
+                        <!-- TOTAL CHATS -->
+
+                        <div class="stat-card">
+
+                            <i class="fa-solid fa-comments"></i>
+
+                            <h3>
+                                {{ total_chats }}
+                            </h3>
+
+                            <p>
+                                Total Chats
+                            </p>
+
+                        </div>
+
+
+                        <!-- MEMBER SINCE -->
+
+                        <div class="stat-card">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                            <h3>
+
+                                {{ user['created_at'] }}
+
+                            </h3>
+
+                            <p>
+                                Member Since
+                            </p>
+
+                        </div>
+
+
+                        <!-- AI MODEL -->
+
+                        <div class="stat-card">
+
+                            <i class="fa-solid fa-robot"></i>
+
+                            <h3>
+
+                                {{ user['ai_model'] if 'ai_model' in user.keys() else 'AI' }}
+
+                            </h3>
+
+                            <p>
+                                AI Model
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                     BUTTONS
+                ========================== -->
+
+                    <div class="buttons">
+
+                        <button type="submit" class="save-btn">
+
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        Save Changes
+
+                    </button>
+
+
+                        <button type="reset" class="reset-btn">
+
+                        <i class="fa-solid fa-rotate-left"></i>
+
+                        Reset
+
+                    </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =========================
+             FOOTER
+        ========================== -->
+
+            <footer class="footer">
+
+                <p>
+                    © 2026 AI Chatbot Pro | Powered by Groq AI
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+     PROFILE PHOTO PREVIEW
+========================== -->
+
+    <script>
+        const profileImage =
+            document.getElementById("profileImage");
+
+        const profilePreview =
+            document.getElementById("profilePreview");
+
+
+        profileImage.addEventListener("change", function() {
+
+            const file = this.files[0];
+
+            if (file) {
+
+                if (!file.type.startsWith("image/")) {
+
+                    alert("Please select a valid image.");
+
+                    this.value = "";
+
+                    return;
+                }
+
+
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+
+                    profilePreview.src =
+                        event.target.result;
+
+                };
+
+                reader.readAsDataURL(file);
+
+            }
+
+        });
+    </script>
+
+
+    <!-- =========================
+     PASSWORD SHOW / HIDE
+========================== -->
+
+    <script>
+        document.querySelectorAll(".toggle-password")
+            .forEach(function(icon) {
+
+                icon.addEventListener("click", function() {
+
+                    const target =
+                        document.getElementById(
+                            this.dataset.target
+                        );
+
+
+                    if (target.type === "password") {
+
+                        target.type = "text";
+
+                        this.classList.remove("fa-eye");
+
+                        this.classList.add("fa-eye-slash");
+
+                    } else {
+
+                        target.type = "password";
+
+                        this.classList.remove("fa-eye-slash");
+
+                        this.classList.add("fa-eye");
+
+                    }
+
+                });
+
+            });
+    </script>
+
+
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+
+</body>
+
+</html>
